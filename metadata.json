@@ -1,0 +1,6 @@
+{
+  "name": "upay Savings Prototype",
+  "description": "A modern fintech prototype for micro-savings, fixed-term deposits, and goal-based savings plans with demo accounts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
