@@ -106,9 +106,8 @@ export const SavingsProvider: React.FC<{ children: React.ReactNode }> = ({ child
     const matDate = new Date(now);
     matDate.setMonth(matDate.getMonth() + params.tenureMonths);
 
-    const initialDeposit = params.planType === 'fixed' ? params.installmentAmount : params.installmentAmount;
-    const initialProfit = Math.round(initialDeposit * (params.interestRate / 100 / 12));
-
+    const initialDeposit = params.installmentAmount;
+    const initialProfit = 0;
     const newPlan: ActiveUserPlan = {
       id: `plan_${Date.now()}`,
       planTemplateId: params.planTemplateId,
@@ -117,7 +116,7 @@ export const SavingsProvider: React.FC<{ children: React.ReactNode }> = ({ child
       goalName: params.goalName || params.planTitle,
       installmentAmount: params.installmentAmount,
       targetAmount: params.targetAmount || params.installmentAmount * (params.tenureMonths || 1),
-      currentBalance: initialDeposit + initialProfit,
+      currentBalance: initialDeposit,
       totalInvested: initialDeposit,
       profitEarned: initialProfit,
       interestRate: params.interestRate,
