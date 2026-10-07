@@ -12,11 +12,19 @@ import {
   Award,
   ChevronRight,
   Clock,
-  CheckCircle2
+  CheckCircle2,
+  Sliders,
+  Bot,
+  HelpCircle,
+  Lightbulb,
+  ShieldAlert,
+  Wallet,
+  Play
 } from 'lucide-react';
 import { SAVINGS_PLAN_TEMPLATES } from '../data/mockData';
 import { calculatePlanReturns, formatCurrency } from '../utils/calculator';
 import { PlanType } from '../types';
+import heroSavingsVault from '../assets/images/hero_savings_vault_1790995417788.jpg';
 
 interface LandingPageProps {
   onNavigate: (tab: string) => void;
@@ -41,51 +49,93 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onOpenCrea
 
   return (
     <div className="space-y-16 pb-20">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-8 pb-16 md:pt-16 md:pb-24 bg-gradient-to-b from-blue-50/60 via-white to-slate-50">
+      {/* 1. Hero Section: Strong Demo Landing */}
+      <section className="relative overflow-hidden pt-8 pb-16 md:pt-14 md:pb-20 bg-gradient-to-b from-blue-50/70 via-white to-slate-50 border-b border-slate-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left Column: Value Prop */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100/70 text-blue-700 text-xs font-medium">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100/80 text-blue-700 text-xs font-semibold">
                 <Sparkles className="w-3.5 h-3.5 text-blue-600" />
                 <span>Next-Gen Personal Savings Prototype</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 leading-[1.15] text-balance">
-                Smarter micro-savings with{' '}
-                <span className="text-blue-600">guaranteed returns</span> up to 9.25% p.a.
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.15] text-balance">
+                AI-powered personal savings planning for{' '}
+                <span className="text-blue-600">everyday Bangladesh</span>
               </h1>
 
               <p className="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed">
-                Automate your monthly deposit, lock high-yield fixed terms, or save towards real-life goals directly from your digital wallet. No bank queues. Zero hidden charges.
+                Turn your income, expenses and savings goal into a realistic plan — then compare what happens when you save more or less.
               </p>
+
+              {/* Three Clear Value Points */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                <div className="p-3.5 rounded-xl bg-white border border-blue-100 shadow-sm space-y-1">
+                  <div className="flex items-center gap-1.5 text-blue-700 font-bold text-xs">
+                    <Bot className="w-4 h-4 text-blue-600 shrink-0" />
+                    <span>Gemini AI Coach</span>
+                  </div>
+                  <p className="text-[11px] text-slate-500 leading-normal">
+                    Evaluates goal feasibility and calculates realistic monthly saving rates.
+                  </p>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-white border border-indigo-100 shadow-sm space-y-1">
+                  <div className="flex items-center gap-1.5 text-indigo-700 font-bold text-xs">
+                    <Sliders className="w-4 h-4 text-indigo-600 shrink-0" />
+                    <span>What-If Simulator</span>
+                  </div>
+                  <p className="text-[11px] text-slate-500 leading-normal">
+                    Compare Current Plan, Save More, and Save Less side-by-side on live charts.
+                  </p>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-sm space-y-1">
+                  <div className="flex items-center gap-1.5 text-slate-800 font-bold text-xs">
+                    <Target className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>Goal-Based Savings Planning</span>
+                  </div>
+                  <p className="text-[11px] text-slate-500 leading-normal">
+                    Structured micro-savings habits for Emergency Fund, Education, and Hajj.
+                  </p>
+                </div>
+              </div>
 
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <button
-                  onClick={() => onNavigate('plans')}
-                  className="px-6 py-3 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-semibold text-sm rounded-xl transition-all shadow-md shadow-blue-500/20 flex items-center gap-2 group"
+                  onClick={() => onNavigate('coach')}
+                  className="px-6 py-3 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-semibold text-sm rounded-xl transition-all shadow-md shadow-blue-500/25 flex items-center gap-2 group"
                 >
-                  <span>Explore Savings Plans</span>
+                  <Sparkles className="w-4 h-4 text-amber-300" />
+                  <span>Launch AI Savings Coach</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
 
                 <button
-                  onClick={() => onNavigate('dashboard')}
-                  className="px-5 py-3 bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 font-semibold text-sm rounded-xl transition-colors shadow-sm"
+                  onClick={() => onNavigate('simulator')}
+                  className="px-5 py-3 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 text-indigo-700 font-semibold text-sm rounded-xl transition-colors shadow-sm flex items-center gap-1.5"
                 >
-                  View Demo Dashboard
+                  <Sliders className="w-4 h-4 text-indigo-600" />
+                  <span>Try What-If Simulator</span>
+                </button>
+
+                <button
+                  onClick={() => onNavigate('plans')}
+                  className="px-4 py-3 bg-white hover:bg-slate-100 border border-slate-300 text-slate-700 font-semibold text-sm rounded-xl transition-colors shadow-sm"
+                >
+                  Explore Plans
                 </button>
               </div>
 
               {/* Trust Indicators */}
-              <div className="pt-6 border-t border-slate-200/80 grid grid-cols-3 gap-4">
+              <div className="pt-4 border-t border-slate-200/80 grid grid-cols-3 gap-4">
                 <div>
-                  <div className="text-xl sm:text-2xl font-bold font-mono text-slate-900 tabular-nums">
-                    9.25%
+                  <div className="text-xl sm:text-2xl font-bold font-mono text-indigo-600 tabular-nums">
+                    Gemini AI
                   </div>
-                  <div className="text-xs text-slate-500 mt-0.5">Top Fixed Yield</div>
+                  <div className="text-xs text-slate-500 mt-0.5">Smart Guidance</div>
                 </div>
                 <div>
                   <div className="text-xl sm:text-2xl font-bold font-mono text-slate-900 tabular-nums">
@@ -106,10 +156,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onOpenCrea
             <div className="lg:col-span-5 relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-900">
                 <img
-                  src="/src/assets/images/hero_savings_vault_1790995417788.jpg"
-                  alt="upay Savings Vault Concept"
-                  className="w-full h-80 sm:h-96 object-cover opacity-90 hover:scale-105 transition-transform duration-700"
-                  referrerPolicy="no-referrer"
+                  src={heroSavingsVault}
+                  alt="Digital savings vault prototype concept"
+                  className="w-full max-w-full h-80 sm:h-96 object-cover opacity-90 hover:scale-105 transition-transform duration-700"
                 />
 
                 {/* Floating Glassmorphic Metric Overlay */}
@@ -137,7 +186,163 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onOpenCrea
         </div>
       </section>
 
-      {/* 4 Savings Plan Cards Preview */}
+      {/* 2. Visual User Journey Flow Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">
+            <TrendingUp className="w-3.5 h-3.5 text-blue-600" />
+            <span>Complete Savings Workflow</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+            The Intelligent Savings Journey
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-600">
+            More than a simple interest calculator — an end-to-end financial intelligence process.
+          </p>
+        </div>
+
+        {/* 5-Step Journey Diagram */}
+        <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 relative">
+          <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm space-y-2 relative">
+            <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 font-bold text-xs flex items-center justify-center">
+              1
+            </div>
+            <h3 className="text-xs font-bold text-slate-900">Your Money</h3>
+            <p className="text-[11px] text-slate-500 leading-relaxed">
+              Define monthly income and essential expenses to discover disposable surplus.
+            </p>
+          </div>
+
+          <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm space-y-2 relative">
+            <div className="w-8 h-8 rounded-xl bg-teal-50 text-teal-600 font-bold text-xs flex items-center justify-center">
+              2
+            </div>
+            <h3 className="text-xs font-bold text-slate-900">Your Goal</h3>
+            <p className="text-[11px] text-slate-500 leading-relaxed">
+              Select specific milestones like Emergency Fund, Education, or Wedding.
+            </p>
+          </div>
+
+          <div className="bg-white p-4 rounded-2xl border border-indigo-200 shadow-sm space-y-2 relative bg-indigo-50/30">
+            <div className="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-700 font-bold text-xs flex items-center justify-center">
+              3
+            </div>
+            <h3 className="text-xs font-bold text-indigo-900 flex items-center gap-1">
+              <span>AI Analysis</span>
+              <Sparkles className="w-3 h-3 text-indigo-600" />
+            </h3>
+            <p className="text-[11px] text-slate-600 leading-relaxed">
+              Gemini evaluates timeline feasibility and recommends realistic monthly savings.
+            </p>
+          </div>
+
+          <div className="bg-white p-4 rounded-2xl border border-blue-200 shadow-sm space-y-2 relative bg-blue-50/30">
+            <div className="w-8 h-8 rounded-xl bg-blue-100 text-blue-700 font-bold text-xs flex items-center justify-center">
+              4
+            </div>
+            <h3 className="text-xs font-bold text-blue-900 flex items-center gap-1">
+              <span>What-If Scenarios</span>
+              <Sliders className="w-3 h-3 text-blue-600" />
+            </h3>
+            <p className="text-[11px] text-slate-600 leading-relaxed">
+              Model Current Plan, Save More, and Save Less side-by-side with visual charts.
+            </p>
+          </div>
+
+          <div className="bg-white p-4 rounded-2xl border border-emerald-200 shadow-sm space-y-2 relative bg-emerald-50/30">
+            <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 font-bold text-xs flex items-center justify-center">
+              5
+            </div>
+            <h3 className="text-xs font-bold text-emerald-900">Action Plan</h3>
+            <p className="text-[11px] text-slate-600 leading-relaxed">
+              Lock in disciplined recurring auto-debits and actionable micro-saving habits.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. "Why This Matters" Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-gradient-to-br from-slate-900 to-indigo-950 rounded-3xl p-8 sm:p-12 text-white shadow-xl space-y-8">
+          <div className="max-w-3xl space-y-3">
+            <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">
+              The Real Problem in Personal Finance
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+              Why Intelligent Savings Planning Matters
+            </h2>
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-medium">
+              "Many people know they should save, but don't know how much they can realistically save each month."
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+              <div className="w-8 h-8 rounded-xl bg-blue-500/20 text-blue-300 flex items-center justify-center text-xs font-bold">
+                01
+              </div>
+              <h3 className="text-sm font-bold text-white">Understand Saving Capacity</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Calculate true disposable surplus from income minus essential living expenses before committing.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+              <div className="w-8 h-8 rounded-xl bg-teal-500/20 text-teal-300 flex items-center justify-center text-xs font-bold">
+                02
+              </div>
+              <h3 className="text-sm font-bold text-white">Set Realistic Goals</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Avoid unrealistic targets that fail mid-way by testing feasibility before locking money.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+              <div className="w-8 h-8 rounded-xl bg-indigo-500/20 text-indigo-300 flex items-center justify-center text-xs font-bold">
+                03
+              </div>
+              <h3 className="text-sm font-bold text-white">Compare Scenarios</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                See exactly how saving ৳2,000 more or less shifts your milestone completion date.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+              <div className="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center text-xs font-bold">
+                04
+              </div>
+              <h3 className="text-sm font-bold text-white">Personalized AI Guidance</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Receive educational suggestions from Gemini tailored to Bangladesh living realities.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Trust & Safety Messaging Banner */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 text-slate-700 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-start gap-3">
+            <ShieldCheck className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+            <div className="space-y-0.5 text-xs">
+              <div className="font-semibold text-slate-900">Educational Planning Prototype</div>
+              <p className="text-slate-500 leading-relaxed">
+                Educational prototype — not financial advice. Does not process real banking, payment or KYC data. Projections are illustrative and depend on user-provided inputs.
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={() => onNavigate('coach')}
+            className="px-4 py-2 bg-slate-900 hover:bg-blue-600 text-white font-semibold text-xs rounded-xl transition-colors whitespace-nowrap shrink-0"
+          >
+            Load Demo Scenario
+          </button>
+        </div>
+      </section>
+
+      {/* 5. 4 Savings Plan Cards Preview */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
@@ -218,7 +423,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onOpenCrea
         </div>
       </section>
 
-      {/* Interactive Savings Calculator Section */}
+      {/* 6. Interactive Savings Calculator Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-slate-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl overflow-hidden relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -232,7 +437,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onOpenCrea
                   Watch your small deposits multiply
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-400 mt-1">
-                  Adjust plan type, installment amount, and tenure to calculate your guaranteed maturity payout.
+                  Adjust plan type, installment amount, and tenure to estimate milestone growth (Illustrative demo only).
                 </p>
               </div>
 
@@ -343,7 +548,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onOpenCrea
                   </span>
                 </div>
                 <div className="flex justify-between items-center text-slate-300">
-                  <span>Guaranteed Profit Accrued:</span>
+                  <span>Illustrative Profit Accrued:</span>
                   <span className="font-mono font-bold text-emerald-400">
                     +{formatCurrency(calcResult.totalProfit)}
                   </span>
@@ -374,117 +579,29 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onOpenCrea
         </div>
       </section>
 
-      {/* Why Save with upay Savings */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
-            Designed for frictionless digital financial freedom
-          </h2>
-          <p className="text-sm text-slate-600 mt-2">
-            Eliminating paperwork, branch visits, and minimum salary restrictions with automated micro-deductions.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
-              <Zap className="w-5 h-5" />
-            </div>
-            <h3 className="text-base font-bold text-slate-900">Zero-Hassle Auto-Debit</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Link your upay mobile wallet once and let the system transfer your monthly savings on salary day. Never miss an installment again.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <h3 className="text-base font-bold text-slate-900">Bank Custodian Backing</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              All deposits are held in insured trust accounts with top scheduled commercial banks, ensuring full capital protection and timely payouts.
-            </p>
-          </div>
-
-          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
-              <Award className="w-5 h-5" />
-            </div>
-            <h3 className="text-base font-bold text-slate-900">Saver Reward Points</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Earn reward points for every successful on-time installment. Climb from Silver to Gold Saver tier for preferential profit rate boosts.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Proof / Attributable Testimonials */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 sm:p-10">
-          <div className="max-w-2xl mb-8">
-            <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-              Real results from disciplined savers
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-600 mt-1">
-              See how everyday mobile wallet users built rainy day cushions and funded major milestones.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-5 bg-white rounded-xl border border-slate-200 space-y-3">
-              <p className="text-xs text-slate-700 italic leading-relaxed">
-                "Setting up the ৳5,000 monthly DPS took less than 60 seconds on my phone. The auto-debit takes it right on the 10th of every month, so I don't accidentally spend it."
-              </p>
-              <div className="flex items-center gap-3 pt-2 border-t border-slate-100">
-                <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-700 font-bold text-xs flex items-center justify-center">
-                  RA
-                </div>
-                <div>
-                  <h4 className="text-xs font-semibold text-slate-900">Rahim Ahmed</h4>
-                  <p className="text-[11px] text-slate-500">Corporate Manager · Saved ৳73,400 in 14 Months</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-5 bg-white rounded-xl border border-slate-200 space-y-3">
-              <p className="text-xs text-slate-700 italic leading-relaxed">
-                "I used the Goal-Based savings plan for my final semester tuition. Putting away ৳2,000 to ৳3,000 whenever I had freelance earnings earned me 8.2% profit without locking my money forever."
-              </p>
-              <div className="flex items-center gap-3 pt-2 border-t border-slate-100">
-                <div className="w-8 h-8 rounded-full bg-teal-100 text-teal-700 font-bold text-xs flex items-center justify-center">
-                  SR
-                </div>
-                <div>
-                  <h4 className="text-xs font-semibold text-slate-900">Sadia Rahman</h4>
-                  <p className="text-[11px] text-slate-500">Graduate Student · Achieved Goal in 6 Months</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action Banner */}
+      {/* 7. Call to Action Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-3xl p-8 sm:p-12 text-white shadow-xl space-y-5">
+        <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 rounded-3xl p-8 sm:p-12 text-white shadow-xl space-y-5">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight max-w-xl mx-auto">
             Ready to test your prototype savings portfolio?
           </h2>
           <p className="text-sm text-blue-100 max-w-md mx-auto">
-            Try the demo mode with pre-populated accounts or test opening a customized savings scheme in real time.
+            Try the demo mode with Gemini AI coaching, run What-If scenarios, or test opening a customized scheme in real time.
           </p>
           <div className="flex flex-wrap justify-center gap-3 pt-2">
             <button
-              onClick={() => onNavigate('dashboard')}
-              className="px-6 py-3 bg-white hover:bg-slate-100 text-blue-900 font-semibold text-xs rounded-xl shadow transition-all active:scale-95"
+              onClick={() => onNavigate('coach')}
+              className="px-6 py-3 bg-white hover:bg-slate-100 text-blue-900 font-semibold text-xs rounded-xl shadow transition-all active:scale-95 flex items-center gap-1.5"
             >
-              Open Customer Dashboard
+              <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+              <span>Launch AI Savings Coach</span>
             </button>
             <button
-              onClick={() => onNavigate('plans')}
-              className="px-6 py-3 bg-blue-800/80 hover:bg-blue-800 text-white font-semibold text-xs rounded-xl transition-all"
+              onClick={() => onNavigate('simulator')}
+              className="px-6 py-3 bg-indigo-900/80 hover:bg-indigo-900 text-white font-semibold text-xs rounded-xl transition-all flex items-center gap-1.5"
             >
-              Compare All 4 Plans
+              <Sliders className="w-3.5 h-3.5 text-indigo-300" />
+              <span>Smart What-If Simulator</span>
             </button>
           </div>
         </div>

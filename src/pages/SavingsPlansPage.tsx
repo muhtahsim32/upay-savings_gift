@@ -53,7 +53,7 @@ export const SavingsPlansPage: React.FC<SavingsPlansPageProps> = ({ onOpenCreate
           Transparent savings plans tailored to your financial goals
         </h1>
         <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-          From micro-daily habits to fixed multi-year endowments, earn high market-competitive interest rates backed by scheduled bank trustees.
+          From micro-daily habits to fixed multi-year endowments, explore illustrative savings returns with a transparent fee concept.
         </p>
       </div>
 
@@ -217,10 +217,10 @@ export const SavingsPlansPage: React.FC<SavingsPlansPageProps> = ({ onOpenCreate
             Savings Growth Simulator
           </span>
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">
-            Calculate your exact maturity profit
+            Estimate illustrative maturity returns
           </h2>
           <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-xl">
-            See the compounding effect across tenures with zero guesswork and transparent daily accruals.
+            Simulate compounding effects across tenures with transparent illustrative daily accruals.
           </p>
         </div>
 
@@ -328,7 +328,7 @@ export const SavingsPlansPage: React.FC<SavingsPlansPageProps> = ({ onOpenCreate
                 </span>
               </div>
               <div className="flex justify-between text-slate-300">
-                <span>Total Net Profit Accrued:</span>
+                <span>Estimated Net Return (Demo):</span>
                 <span className="font-mono font-bold text-emerald-400">
                   +{formatCurrency(calcResult.totalProfit)}
                 </span>

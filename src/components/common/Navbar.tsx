@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Wallet, Plus, LogOut, Menu, X, User as UserIcon } from 'lucide-react';
 import { formatCurrency } from '../../utils/calculator';
+import avatarDemoUser from '../../assets/images/avatar_demo_user_1790995439814.jpg';
 
 interface NavbarProps {
   currentTab: string;
@@ -16,6 +17,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onNavigate, onOpenCr
   const navLinks = [
     { id: 'landing', label: 'Home' },
     { id: 'plans', label: 'Savings Plans' },
+    { id: 'coach', label: 'AI Coach' },
+    { id: 'simulator', label: 'What-If Simulator' },
     ...(isAuthenticated ? [{ id: 'dashboard', label: 'Dashboard' }] : []),
     ...(isAuthenticated ? [{ id: 'profile', label: 'Profile' }] : [])
   ];
@@ -53,13 +56,18 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onNavigate, onOpenCr
                 <button
                   key={link.id}
                   onClick={() => handleNavClick(link.id)}
-                  className={`transition-colors relative py-1 ${
+                  className={`transition-colors relative py-1 flex items-center gap-1.5 ${
                     isActive
                       ? 'text-blue-600 font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-blue-600'
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
-                  {link.label}
+                  <span>{link.label}</span>
+                  {link.id === 'coach' && (
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-indigo-100 text-indigo-700 border border-indigo-200">
+                      Gemini
+                    </span>
+                  )}
                 </button>
               );
             })}
@@ -84,10 +92,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onNavigate, onOpenCr
                   className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg border border-slate-200 hover:border-slate-300 text-slate-700 hover:bg-slate-50 transition-colors text-xs font-medium"
                 >
                   <img
-                    src={user?.avatarUrl || '/src/assets/images/avatar_demo_user_1790995439814.jpg'}
-                    alt={user?.name || 'User'}
-                    className="w-5 h-5 rounded-full object-cover"
-                    referrerPolicy="no-referrer"
+                    src={user?.avatarUrl || avatarDemoUser}
+                    alt={user?.name ? `${user.name} avatar` : 'User profile'}
+                    className="w-5 h-5 max-w-full rounded-full object-cover shrink-0"
                   />
                   <span className="max-w-[100px] truncate">{user?.name?.split(' ')[0]}</span>
                   <span className="text-slate-400 font-mono text-[11px] tabular-nums">

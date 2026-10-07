@@ -16,7 +16,9 @@ import {
   FileText,
   Filter,
   RefreshCw,
-  Sparkles
+  Sparkles,
+  Bot,
+  ArrowRight
 } from 'lucide-react';
 import { formatCurrency, formatCompactCurrency } from '../utils/calculator';
 import { ActiveUserPlan } from '../types';
@@ -168,6 +170,42 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
           <div className="text-[11px] text-indigo-700 font-medium">
             Next Milestone: 2,000 pts (Gold)
           </div>
+        </div>
+      </div>
+
+      {/* AI Savings Coach Feature Banner */}
+      <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 rounded-2xl p-5 text-white shadow-md border border-indigo-800/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex items-start gap-3.5">
+          <div className="p-3 rounded-xl bg-blue-500/20 text-blue-300 border border-blue-400/30 shrink-0">
+            <Sparkles className="w-5 h-5 text-amber-300" />
+          </div>
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-bold text-white">Gemini AI Savings Coach</span>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-500/30 text-indigo-200 border border-indigo-400/30">
+                New Feature
+              </span>
+            </div>
+            <p className="text-xs text-slate-300 max-w-xl leading-relaxed">
+              Evaluate goal feasibility, calculate realistic monthly targets, and generate personalized action plans using Google Gemini models.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 shrink-0">
+          <button
+            onClick={() => onNavigate('simulator')}
+            className="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs rounded-xl transition-all border border-slate-700"
+          >
+            What-If Simulator
+          </button>
+          <button
+            onClick={() => onNavigate('coach')}
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white font-semibold text-xs rounded-xl transition-all shadow-md flex items-center gap-1.5"
+          >
+            <span>Launch AI Coach</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
         </div>
       </div>
 

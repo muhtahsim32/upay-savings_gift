@@ -9,6 +9,8 @@ import { LoginPage } from './pages/LoginPage';
 import { DashboardPage } from './pages/DashboardPage';
 import { SavingsPlansPage } from './pages/SavingsPlansPage';
 import { ProfilePage } from './pages/ProfilePage';
+import { AiSavingsCoachPage } from './pages/AiSavingsCoachPage';
+import { WhatIfSimulatorPage } from './pages/WhatIfSimulatorPage';
 import { CreatePlanModal } from './components/plans/CreatePlanModal';
 import { DepositModal } from './components/plans/DepositModal';
 import { PlanType, ActiveUserPlan } from './types';
@@ -80,6 +82,20 @@ function AppContent() {
         {currentTab === 'plans' && (
           <SavingsPlansPage
             onOpenCreatePlan={handleOpenCreatePlan}
+          />
+        )}
+
+        {currentTab === 'coach' && (
+          <AiSavingsCoachPage
+            onNavigate={navigateTo}
+            onOpenCreatePlan={() => handleOpenCreatePlan('goal')}
+          />
+        )}
+
+        {currentTab === 'simulator' && (
+          <WhatIfSimulatorPage
+            onNavigate={navigateTo}
+            onOpenCreatePlan={() => handleOpenCreatePlan('goal')}
           />
         )}
 

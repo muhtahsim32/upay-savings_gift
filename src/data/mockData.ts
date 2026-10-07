@@ -1,4 +1,5 @@
 import { SavingsPlanTemplate, ActiveUserPlan, SavingsTransaction, UserProfile } from '../types';
+import avatarDemoUser from '../assets/images/avatar_demo_user_1790995439814.jpg';
 
 export const SAVINGS_PLAN_TEMPLATES: SavingsPlanTemplate[] = [
   {
@@ -14,7 +15,7 @@ export const SAVINGS_PLAN_TEMPLATES: SavingsPlanTemplate[] = [
     popularTenures: [12, 24, 36, 60],
     frequency: 'Monthly',
     features: [
-      'Guaranteed 8.5% annual compounded profit',
+      'Illustrative savings returns (8.5% p.a. demo rate)',
       'Flexible tenures from 6 months up to 5 years',
       'Automated monthly auto-debit from upay balance',
       'Premature withdrawal after 3 months without penalty',
@@ -42,10 +43,10 @@ export const SAVINGS_PLAN_TEMPLATES: SavingsPlanTemplate[] = [
     popularTenures: [12, 24, 36],
     frequency: 'Yearly',
     features: [
-      'High 8.9% return per annum',
+      'Illustrative 8.9% return per annum (demo)',
       'Single annual deposit or 12-month lump milestone',
       '+0.4% loyalty point booster upon annual completion',
-      'Zero maintenance or account fees',
+      'Transparent fee concept: zero maintenance charges',
       'Eligible for annual cashback lucky draw demo'
     ],
     riskRating: 'Capital Protected',
@@ -72,11 +73,11 @@ export const SAVINGS_PLAN_TEMPLATES: SavingsPlanTemplate[] = [
     features: [
       'Flexible deposits anytime from ৳200+',
       'Visual milestone trackers & achievement badges',
-      'Daily profit accrual with 8.2% annual yield',
+      'Daily illustrative profit accrual with 8.2% annual demo yield',
       'Target lock to avoid impulsive spending',
       'Withdraw directly to upay wallet anytime'
     ],
-    riskRating: 'Guaranteed',
+    riskRating: 'Capital Protected',
     badge: 'Most Flexible',
     colorScheme: {
       primary: '#d97706', // Amber
@@ -89,7 +90,7 @@ export const SAVINGS_PLAN_TEMPLATES: SavingsPlanTemplate[] = [
     id: 'fixed-term-fdr',
     type: 'fixed',
     title: 'Fixed-Term Savings',
-    tagline: 'Lock in guaranteed top-tier interest for a fixed duration with zero market volatility.',
+    tagline: 'Model fixed-duration savings with competitive demo yield and zero market volatility.',
     interestRate: 9.25,
     minAmount: 5000,
     maxAmount: 1000000,
@@ -98,13 +99,13 @@ export const SAVINGS_PLAN_TEMPLATES: SavingsPlanTemplate[] = [
     popularTenures: [3, 6, 12, 24],
     frequency: 'One-Time',
     features: [
-      'Maximum 9.25% fixed return p.a.',
+      'Demo rate: up to 9.25% p.a.',
       'Choice of 3, 6, 12, or 24-month locked terms',
       'Profit payout at maturity or quarterly',
       'Loan facility against FDR up to 80% (concept)',
-      '100% principal & interest guarantee'
+      'Capital preservation prototype model'
     ],
-    riskRating: 'Guaranteed',
+    riskRating: 'Capital Protected',
     badge: 'Maximum Return',
     colorScheme: {
       primary: '#4f46e5', // Indigo
@@ -120,7 +121,7 @@ export const INITIAL_USER_PROFILE: UserProfile = {
   name: 'Rahim Ahmed',
   mobile: '+880 1712-345678',
   email: 'rahim.ahmed@example.com',
-  avatarUrl: '/src/assets/images/avatar_demo_user_1790995439814.jpg',
+  avatarUrl: avatarDemoUser,
   walletBalance: 34500,
   nomineeName: 'Nasrin Sultana',
   nomineeRelation: 'Spouse',
@@ -144,7 +145,7 @@ export const DEMO_USERS: Record<string, UserProfile> = {
     name: 'Sadia Rahman',
     mobile: '+880 1898-765432',
     email: 'sadia.rahman@student.ac.bd',
-    avatarUrl: '/src/assets/images/avatar_demo_user_1790995439814.jpg',
+    avatarUrl: avatarDemoUser,
     walletBalance: 8200,
     nomineeName: 'Abdul Rahman',
     nomineeRelation: 'Father',

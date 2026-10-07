@@ -16,6 +16,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { formatCurrency } from '../utils/calculator';
+import avatarDemoUser from '../assets/images/avatar_demo_user_1790995439814.jpg';
 
 interface ProfilePageProps {
   onNavigate: (tab: string) => void;
@@ -118,10 +119,9 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({ onNavigate }) => {
           <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm text-center space-y-4">
             <div className="relative inline-block">
               <img
-                src={user?.avatarUrl || '/src/assets/images/avatar_demo_user_1790995439814.jpg'}
-                alt={user?.name || 'User'}
-                className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md mx-auto"
-                referrerPolicy="no-referrer"
+                src={user?.avatarUrl || avatarDemoUser}
+                alt={user?.name ? `${user.name} avatar` : 'Demo user avatar'}
+                className="w-24 h-24 max-w-full rounded-full object-cover border-4 border-white shadow-md mx-auto"
               />
               <span className="absolute bottom-0 right-1 p-1 bg-emerald-500 text-white rounded-full ring-2 ring-white">
                 <CheckCircle className="w-4 h-4" />

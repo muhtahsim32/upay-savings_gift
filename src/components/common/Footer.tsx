@@ -48,7 +48,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </div>
               <div>
                 <h4 className="text-white font-medium text-xs">Transparent Yields</h4>
-                <p className="text-xs text-slate-400 mt-0.5">Clear annual compounded rates with zero hidden maintenance fees</p>
+                <p className="text-xs text-slate-400 mt-0.5">Clear illustrative savings returns with a transparent fee concept</p>
               </div>
             </div>
           </div>
